@@ -30,6 +30,6 @@ EXPOSE 8061
 EXPOSE 8062
 EXPOSE 12345
 
-CMD ["/root/.local/bin/poetry", "run", "uvicorn", "start_service:app", "--host", "0.0.0.0", "--proxy-headers", "--port", "12345"]
+#CMD ["/root/.local/bin/poetry", "run", "uvicorn", "start_service:app", "--host", "0.0.0.0", "--proxy-headers", "--port", "12345"]
 #RUN chmod 755 ./start.sh
-#CMD ["./start.sh"]
+CMD ["./start.sh"]
