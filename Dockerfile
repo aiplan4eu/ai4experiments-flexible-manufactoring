@@ -26,7 +26,8 @@ RUN pipx install poetry
 
 RUN /root/.local/bin/poetry install
 
-EXPOSE 80
+EXPOSE 8061
+EXPOSE 8062
 EXPOSE 12345
 
 CMD ["/root/.local/bin/poetry", "run", "uvicorn", "start_service:app", "--host", "0.0.0.0", "--proxy-headers", "--port", "12345"]
