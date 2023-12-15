@@ -1,0 +1,6 @@
+<div class="container">
+    <button mat-raised-button [disabled]="!(plannerService.isPlanningAvailable() | async)" (click)="onClick()">Plan!</button>
+    <mat-list role="list">
+        <mat-spinner *ngIf="plannerService.isPlanningOngoing$ | async"></mat-spinner>
+    </mat-list>
+</div>

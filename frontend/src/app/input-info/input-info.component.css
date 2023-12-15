@@ -1,0 +1,26 @@
+.container mat-form-field + mat-form-field {
+  margin-left: 8px;
+}
+
+.input-grid-item {
+  width: 220px;
+}
+
+.container form {
+  margin-bottom: 20px;
+}
+
+.container form > * {
+  margin: 12px 0;
+}
+
+.input-form-fields {
+  display: flex;
+  align-items: flex-start;
+}
+
+.input-grid-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+

@@ -1,0 +1,136 @@
+<div :class="input-component container">
+
+  <mat-tab-group>
+    <mat-tab label="Try one of our examples">
+
+      <table mat-table [dataSource]="exampleSource">
+        <ng-container matColumnDef="exampleName">
+          <th mat-header-cell *matHeaderCellDef>Name</th>
+          <td mat-cell *matCellDef="let element">{{element.name}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="exampleDescription">
+          <th mat-header-cell *matHeaderCellDef>Description</th>
+          <td mat-cell *matCellDef="let element">{{element.description}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="examplePlanningTime">
+          <th mat-header-cell *matHeaderCellDef>Expected Planning Time (in Min)</th>
+          <td mat-cell *matCellDef="let element">{{element.planningTime}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="exampleActions">
+          <th mat-header-cell  *matHeaderCellDef > Actions </th>
+          <td mat-cell *matCellDef="let row" >
+            <button mat-raised-button (click)="addExample(row)">Add </button>
+          </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="exampleDisplayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: exampleDisplayedColumns;"></tr>
+      </table>
+
+    </mat-tab>
+    <mat-tab label="Create your own problem">
+      <form [formGroup] = "inputForm" #formDirective="ngForm" (ngSubmit)="onSubmit(formDirective)">
+        <div>
+          <label>Please input information related to the batches to produce. Warning: planning may take a lot of time. </label>
+        </div>
+
+        <div class="input-form-fields">
+          <div class="input-grid-container">
+            <div class="input-grid-item">
+              <mat-form-field>
+                <mat-label>Family</mat-label>
+                <mat-select formControlName="batchFamily">
+                  <mat-option *ngFor="let family of familyList" [value]="family">{{family}}</mat-option>
+                </mat-select>
+              </mat-form-field>
+            </div>
+            <div class="input-grid-item">
+              <mat-form-field>
+                <mat-label>Quantity</mat-label>
+                <input matInput type="number" formControlName="quantity">
+              </mat-form-field>
+            </div>
+            <div class="input-grid-item">
+              <mat-form-field>
+                <mat-label>Processed Stock</mat-label>
+                <input matInput type="number" formControlName="processedStock">
+              </mat-form-field>
+            </div>
+            <div class="input-grid-item">
+
+            </div>
+            <div class="input-grid-item">
+
+            </div>
+            <div class="input-grid-item>">
+              <mat-form-field>
+                <mat-label>Starting Stock Pinion</mat-label>
+                <input matInput type="number" formControlName="startingStockPinion">
+              </mat-form-field>
+            </div>
+            <div class="input-grid-item>">
+              <mat-form-field>
+                <mat-label>Starting Stock Gear</mat-label>
+                <input matInput type="number" formControlName="startingStockGear">
+              </mat-form-field>
+            </div>
+            <div class="input-grid-item">
+              <button mat-raised-button type="submit">+</button>
+              <button mat-raised-button type="button" (click)="clearTable()">Clear all</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </mat-tab>
+
+  </mat-tab-group>
+
+  <br/>
+
+  <table mat-table [dataSource]="batchSource">
+    <!-- Family Column -->
+    <ng-container matColumnDef="family">
+      <th mat-header-cell *matHeaderCellDef>Family</th>
+      <td mat-cell *matCellDef="let element">{{element.family}}</td>
+    </ng-container>
+
+    <!-- Quantity Column -->
+    <ng-container matColumnDef="quantity">
+      <th mat-header-cell *matHeaderCellDef>Quantity</th>
+      <td mat-cell *matCellDef="let element">{{element.quantity}}</td>
+    </ng-container>
+
+    <!-- Stock Column -->
+    <ng-container matColumnDef="stock">
+      <th mat-header-cell *matHeaderCellDef>Processed Stock</th>
+      <td mat-cell *matCellDef="let element">{{element.processedStock}}</td>
+    </ng-container>
+
+    <!-- Starting stock pinion-->
+    <ng-container matColumnDef="startingStockPinion">
+      <th mat-header-cell *matHeaderCellDef>Starting Stock Pinion</th>
+      <td mat-cell *matCellDef="let element">{{element.startingStockPinion}}</td>
+    </ng-container>
+
+    <!-- Starting stock gear -->
+    <ng-container matColumnDef="startingStockGear">
+      <th mat-header-cell *matHeaderCellDef>Starting Stock Gear</th>
+      <td mat-cell *matCellDef="let element">{{element.startingStockGear}}</td>
+    </ng-container>
+
+    <!-- Button with actions -->
+    <ng-container matColumnDef="actions">
+      <th mat-header-cell  *matHeaderCellDef > Actions </th>
+      <td mat-cell *matCellDef="let row" >
+        <button mat-raised-button (click)="deleteRow(row)">-</button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+</div>
