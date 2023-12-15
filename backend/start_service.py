@@ -71,7 +71,7 @@ def trigger_planning(batchList: BatchList):
     print("received a planning request")
     engine = GrapheneEngine(port=8061)
     problem = create_fm_problem()
-    #planner = OneshotPlanner(name="tamer", params={"heuristic" : ""})
+    planner = OneshotPlanner(name="tamer", params={"heuristic" : ""})
     for batch in batchList.data:
         # get the family fluent from name
         family = problem.object(batch.family)
@@ -97,8 +97,8 @@ def trigger_planning(batchList: BatchList):
     # now everything is initialized, we create the plan!
     #print(mini_problem)
     #We solve the problem
-    result = engine.solve(problem, "solved_optimally")
-    #result = planner.solve(problem)
+    #result = engine.solve(problem, "solved_optimally")
+    result = planner.solve(problem)
 
     # we return the plan!
     plan = Plan()

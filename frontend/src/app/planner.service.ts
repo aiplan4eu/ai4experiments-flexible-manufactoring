@@ -45,7 +45,7 @@ export class PlannerService {
     console.log("Calling the planner")
     this.isPlanningOngoing$ = of(true);
 
-    let plannerUrl = "http://127.0.0.1:12345/plan";
+    let plannerUrl = "http://0.0.0.0:12345/plan";
     let body = {
       "data": batchList
     }

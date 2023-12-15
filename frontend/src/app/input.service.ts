@@ -28,7 +28,7 @@ export class InputService {
   }
 
   getFamilyList() : Observable<string[]>{
-    const req = this.http.get<string[]>("http://127.0.0.1:12345/family-list");
+    const req = this.http.get<string[]>("http://0.0.0.0:12345/family-list");
     return req;
   }
 
