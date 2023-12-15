@@ -6,3 +6,5 @@
 .gitignore
 *.zip
 /.idea
+
+backend/poetry.lock
